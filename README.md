@@ -1,27 +1,11 @@
 
 # 🚗 DRIVEWISE Simulation — Rear or Front Wheel Drive Analyzer
 
-[![License](https://img.shields.io/github/license/mach2furkan/rear-or-front-wheel)](LICENSE)
-[![Issues](https://img.shields.io/github/issues/mach2furkan/rear-or-front-wheel)](https://github.com/mach2furkan/rear-or-front-wheel/issues)
-[![Stars](https://img.shields.io/github/stars/mach2furkan/rear-or-front-wheel)](https://github.com/mach2furkan/rear-or-front-wheel)
 
 Welcome to **Drivewise Simulation**, an interactive tool that visualizes how a sports car behaves in a curve depending on its drivetrain (Rear-Wheel Drive or Front-Wheel Drive).  
 This project combines **physics-based calculations** with **stunning 3D visuals** using React Three Fiber and custom post-processing effects.
 
----
 
-## 🚀 Live Demo
-
-Coming soon...
-
----
-
-## 📸 Preview
-
-![Preview GIF](https://github.com/mach2furkan/rear-or-front-wheel/assets/demo-preview.gif)  
-<!-- Replace this with actual media when ready -->
-
----
 
 ## 📦 Project Structure
 
