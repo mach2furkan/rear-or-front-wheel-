@@ -1,7 +1,3 @@
-# rear-or-front-wheel-
-
-
-
 
 # 🚗 DRIVEWISE Simulation — Rear or Front Wheel Drive Analyzer
 
@@ -9,19 +5,21 @@
 [![Issues](https://img.shields.io/github/issues/mach2furkan/rear-or-front-wheel)](https://github.com/mach2furkan/rear-or-front-wheel/issues)
 [![Stars](https://img.shields.io/github/stars/mach2furkan/rear-or-front-wheel)](https://github.com/mach2furkan/rear-or-front-wheel)
 
-Welcome to **Drivewise Simulation** — an interactive tool that visualizes how a sports car behaves in a curve depending on its drivetrain (Rear-Wheel Drive or Front-Wheel Drive). This project combines physics-based calculations with stunning 3D visuals using React Three Fiber and post-processing effects.
+Welcome to **Drivewise Simulation**, an interactive tool that visualizes how a sports car behaves in a curve depending on its drivetrain (Rear-Wheel Drive or Front-Wheel Drive).  
+This project combines **physics-based calculations** with **stunning 3D visuals** using React Three Fiber and custom post-processing effects.
 
 ---
 
 ## 🚀 Live Demo
+
 Coming soon...
 
 ---
 
 ## 📸 Preview
 
-https://github.com/mach2furkan/rear-or-front-wheel/assets/demo-preview.gif  
-<!-- Replace with actual GIF link when available -->
+![Preview GIF](https://github.com/mach2furkan/rear-or-front-wheel/assets/demo-preview.gif)  
+<!-- Replace this with actual media when ready -->
 
 ---
 
@@ -43,10 +41,11 @@ drivewise_simulation/
 
 ## 🧰 Tech Stack
 
-- **React** + **TypeScript**
-- **Three.js** via [`@react-three/fiber`](https://docs.pmnd.rs/react-three-fiber)
-- Post-processing via [`@react-three/postprocessing`](https://github.com/pmndrs/postprocessing)
-- Physics Engine: Custom drift, weight transfer, and curve prediction logic
+- ⚛️ React + TypeScript
+- 🎮 Three.js with `@react-three/fiber`
+- 💡 Visual Effects via `@react-three/postprocessing`
+- 🧠 Real-time physics logic and drift control
+- 📈 Custom curve detection and speed-angle estimation
 
 ---
 
@@ -71,40 +70,59 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing'
 ## 🎮 Features
 
 - 🔄 Toggle between Front-Wheel and Rear-Wheel Drive
-- 🧠 Calculates real-time entry angle, optimal speed, and slip behavior
-- 🌟 Bloom effect for visual feedback on acceleration & braking zones
-- 🧭 Live curve-based driving assistance
-- 📉 Physics engine for dynamic simulation
+- 📉 Real-time curve entry speed, angle, and radius calculations
+- 💥 Bloom effect feedback for driving precision
+- 📊 Physics engine: mass, friction, acceleration behavior
+- 🚨 Error & oversteer/understeer detection alerts
 
 ---
 
-## 🧪 How to Run Tests
+## 📐 Curve Entry Physics – Explained Visually & Mathematically
 
-```bash
-# Run type-checks
-npm run typecheck
+Understanding how a car behaves while entering a curve depends on **centripetal force**, **friction**, **mass**, **velocity**, and **drivetrain type**.
 
-# Run visual simulation in dev mode
-npm run dev
+### 🧮 Required Turning Radius Formula
 
-# Run automated unit tests (coming soon)
-npm run test
+\[
+R = \frac{v^2}{g \cdot \mu}
+\]
+
+**Where:**
+
+- \( R \) → Minimum turning radius (meters)  
+- \( v \) → Vehicle speed (m/s)  
+- \( g \) → Gravitational acceleration (9.81 m/s²)  
+- \( \mu \) → Tire friction coefficient (0.7 - 1.2)
+
+---
+
+### 🧠 Bonus Insight – Slip Angle
+
+To simulate skidding or drifting:
+
+\[
+\alpha = \tan^{-1} \left(\frac{v_{lat}}{v_{long}}\right)
+\]
+
+Where:
+- \( \alpha \) is the **slip angle**
+- \( v_{lat} \) = lateral velocity
+- \( v_{long} \) = longitudinal velocity
+
+---
+
+### 🌀 Simulation Logic Flow
+
+```mermaid
+flowchart TD
+  A[Car Speed & Angle Input] --> B[Detect Curve & Radius]
+  B --> C{Is Radius Feasible?}
+  C -- Yes --> D[Calculate Entry Speed]
+  C -- No --> E[Show Warning: Too Fast]
+  D --> F[Adjust Steering for Drivetrain]
+  E --> F
+  F --> G[Visual Feedback & Bloom Effect]
 ```
-
----
-
-## 🔍 Curve Detection Logic
-
-The simulation uses a combination of:
-
-- Steering angle + IMU input
-- GPS-based path prediction
-- Radius calculation using:
-  \[
-  R = \frac{v^2}{g \cdot \mu}
-  \]
-
-When a corner is detected, the software dynamically adjusts recommended entry angle and speed based on drivetrain type.
 
 ---
 
@@ -120,46 +138,44 @@ When a corner is detected, the software dynamically adjusts recommended entry an
 
 ---
 
-## 🗂️ Repository
+## 🧪 Testing
 
-🔗 [GitHub Repo → mach2furkan/rear-or-front-wheel](https://github.com/mach2furkan/rear-or-front-wheel)
+```bash
+# Run type-checks
+npm run typecheck
+
+# Run the simulation in dev mode
+npm run dev
+
+# Run automated unit tests (TBD)
+npm run test
+```
 
 ---
 
 ## 🤝 Acknowledgments
 
-- 🌟 [@pmndrs](https://github.com/pmndrs) for the React Three Fiber & Postprocessing ecosystem
-- 🧠 Inspiration from GT Racing Sim Physics Docs
-- 🎮 Thanks to contributors who tested the simulation across platforms
+- 🛠 [@pmndrs](https://github.com/pmndrs) for their awesome React + Three.js ecosystem
+- 📚 Simulation logic inspired by motorsport & drift telemetry
+- 👨‍💻 Big thanks to contributors who tested and optimized the performance
 
 ---
 
 ## 🧑‍💻 Contributing
 
-Contributions, ideas, and suggestions are very welcome!  
-To contribute:
+Contributions are welcome! Open an issue or PR — or fork and tinker freely.
 
 ```bash
-# Clone repo
 git clone https://github.com/mach2furkan/rear-or-front-wheel
-
-# Install dependencies
 cd rear-or-front-wheel
 npm install
-
-# Start dev server
 npm run dev
 ```
-
-Please check open issues or suggest a new one!
 
 ---
 
 ## 📄 License
 
 This project is licensed under the MIT License.  
-See [LICENSE](./LICENSE) for more info.
-
----
-
+See [LICENSE](./LICENSE) for full terms.
 
